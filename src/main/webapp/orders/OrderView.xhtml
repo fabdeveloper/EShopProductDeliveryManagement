@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:em="http://jsfcompslib.src/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<p:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+</p:head>
+<p:body>
+	<ui:composition template="../templates/PurchaseDetailTemplate.xhtml">
+		
+
+		
+<!-- 		<ui:define name="order"> -->
+		<ui:define name="bloque1">
+		
+			<em:output3fieldscom
+				at1="Identificador del pedido : "
+				at2="#{ordersViewBB.getOrderseleccionada().getId()}"
+				at3="Fecha de confirmacion: "
+				at4="#{ordersViewBB.getOrderseleccionada().getConfirmationDate()}"
+				at5="Estado: "
+				at6="#{ordersViewBB.getOrderseleccionada().getPurchaseStatus().getStatus()}"
+			></em:output3fieldscom>
+		</ui:define>	
+			
+<!-- 		<ui:define name="client"> -->
+		<ui:define name="bloque4">
+		
+			<em:output6fieldscom
+				at1="Cliente: "
+				at2="#{ordersViewBB.getOrderseleccionada().getClient().getName()}"
+				at3="Nick: "
+				at4="#{ordersViewBB.getOrderseleccionada().getClient().getNick()}"
+				at5="Direccion: "
+				at6="#{ordersViewBB.getOrderseleccionada().getClient().getAddress()}"
+				at7="Email: "
+				at8="#{ordersViewBB.getOrderseleccionada().getClient().getEmail()}"				
+
+			></em:output6fieldscom>
+		</ui:define>	
+			
+<!-- 		<ui:define name="delivery"> -->
+		<ui:define name="bloque3">
+		
+			<em:output6fieldscom
+				at1="Direccion de entrega: "
+				at2="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryAddress()}"
+				at3="Comentarios de entrega: "
+				at4="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getRemark()}"
+				at5="Tipo de envio: "
+				at6="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryType()}"
+				at7="Estado de la entrega : "
+				at8="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getStatus()}"
+			></em:output6fieldscom>	
+		</ui:define>
+				
+<!-- 		<ui:define name="cart"> -->
+		<ui:define name="bloque2">
+		
+			<em:outputcartcomp
+				titulo1="Numero de items: "
+				texto1="#{ordersViewBB.getOrderseleccionada().getCart().getListaItems().size()}"
+				titulo2="Precio total: "
+				texto2="#{ordersViewBB.getOrderseleccionada().getCart().getValue()}"
+				lista="#{ordersViewBB.getOrderseleccionada().getCart().getListaItems()}"		
+			></em:outputcartcomp>	
+		</ui:define>
+
+
+	</ui:composition>
+
+</p:body>
+</html>
