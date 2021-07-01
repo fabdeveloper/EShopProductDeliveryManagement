@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://java.sun.com/jsf/html"
+	xmlns:mylib="http://jsfcompslib.src/taglib">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
-<body>
+<p:body>
 
-</body>
+<mylib:logincomp 
+user="#{indexBB.name}"
+password="#{indexBB.password}"
+bean="#{indexBB}"
+>
+</mylib:logincomp>
+
+
+<p:form>
+		<p:commandButton value="test" action="#{testerBB.test()}"></p:commandButton>
+	</p:form>
+
+	<p:messages>
+		<p:message></p:message>
+	</p:messages>
+</p:body>
 </html>
