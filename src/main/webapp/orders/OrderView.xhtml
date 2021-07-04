@@ -48,13 +48,25 @@
 			<em:output6fieldscom
 				at1="Direccion de entrega: "
 				at2="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryAddress()}"
+				
 				at3="Comentarios de entrega: "
 				at4="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getRemark()}"
+				
 				at5="Tipo de envio: "
 				at6="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryType()}"
+				
 				at7="Estado de la entrega : "
 				at8="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getStatus()}"
 			></em:output6fieldscom>	
+			
+			<em:ActualizableStatusComp
+				textbutton="Dale"
+				itemseleccionado="#{ordersViewBB.estadoEntrega}"
+				bean="#{ordersViewBB}"
+				listaItems="#{ordersViewBB.listaDeliveryStatus}"
+				remarks="#{ordersViewBB.deliveryRemarks}"
+			>
+			</em:ActualizableStatusComp>
 		</ui:define>
 				
 <!-- 		<ui:define name="cart"> -->

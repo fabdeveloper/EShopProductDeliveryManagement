@@ -1,0 +1,32 @@
+<glassfish-web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+                   xmlns:xsi="http://www.w3.org/2001/XMSSchema-instance"
+                   xsi:schemaLocation="http://java.sun.com/xml/ns/h2ee web-app_2_4.xsd"
+                   version="2.4">
+   
+   <context-root>EShopProductDeliveryManagement</context-root>
+   
+   
+   
+   <security-role-ref>
+<role-name>DELIVERYAGENT</role-name>
+</security-role-ref>
+
+   <security-role-ref>
+<role-name>ADMIN</role-name>
+</security-role-ref>
+   
+       <security-role-mapping>
+    <role-name>DELIVERYAGENT</role-name>
+    <group-name>DELIVERYAGENT</group-name>
+  </security-role-mapping>
+  
+    
+  <security-role-mapping>
+  <role-name>ADMIN</role-name>
+  <group-name>ADMIN</group-name>
+<!--   <principal-name>fab</principal-name> -->
+  </security-role-mapping>
+   
+
+
+</glassfish-web-app>
