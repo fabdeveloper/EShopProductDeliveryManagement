@@ -7,20 +7,23 @@
    
    
    
-   <security-role-ref>
-<role-name>DELIVERYAGENT</role-name>
-</security-role-ref>
+   	<security-role-ref>
+		<role-name>DELIVERYAGENT</role-name>
+	</security-role-ref>
 
-   <security-role-ref>
-<role-name>ADMIN</role-name>
-</security-role-ref>
+
    
-       <security-role-mapping>
-    <role-name>DELIVERYAGENT</role-name>
-    <group-name>DELIVERYAGENT</group-name>
-  </security-role-mapping>
+	  <security-role-mapping>
+	    <role-name>DELIVERYAGENT</role-name>
+	    <group-name>DELIVERYAGENT</group-name>
+	  </security-role-mapping>
   
     
+       <security-role-ref>
+<role-name>ADMIN</role-name>
+</security-role-ref>
+
+
   <security-role-mapping>
   <role-name>ADMIN</role-name>
   <group-name>ADMIN</group-name>

@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import src.entity.DeliveryDetailsStatusType;
 import src.entity.Order;
@@ -149,6 +150,7 @@ public class OrdersViewBB implements Serializable, IProcessable {
 		getLogger().log(Level.INFO, msg);
 	}
 	
+	@Transactional
 	public String process() {
 		String msg = "Estado entrega = " + getEstadoEntrega() + ", deliveryRemarks = " + getDeliveryRemarks();
 		publish(msg);
