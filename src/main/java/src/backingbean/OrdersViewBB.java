@@ -102,12 +102,12 @@ public class OrdersViewBB implements Serializable, IProcessable {
 	
 	public void initOrdenSeleccionada() {
 		resetOrdenSeleccionada();
-		publish("OrdersViewBB.initOrdenSeleccionada() ... - items= " + getList().size());
+//		publish("OrdersViewBB.initOrdenSeleccionada() ... - items= " + getList().size());
 		for(Order ord : getList()) {
-			publish("order.id = " + ord.getId() + ", itemSel = " + itemSel);
+//			publish("order.id = " + ord.getId() + ", itemSel = " + itemSel);
 			if(ord.getId().compareTo(Integer.valueOf(itemSel)) == 0) {
 				orderseleccionada = ord;
-				publish("OrdersViewBB.initOrdenSeleccionada() - encontrado match - ");
+//				publish("OrdersViewBB.initOrdenSeleccionada() - encontrado match - ");
 
 			}
 		}
@@ -161,7 +161,7 @@ public class OrdersViewBB implements Serializable, IProcessable {
 		getOrderseleccionada().getDeliveryDetails().setLastModificationDate(new Date());
 		
 		// grabar cambios
-		getServiceLocator().getOrderServices().update(getOrderseleccionada());
+		getServiceLocator().getOrderServices().merge(getOrderseleccionada());
 		return null;
 	}
 
