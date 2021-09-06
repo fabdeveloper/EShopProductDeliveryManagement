@@ -16,6 +16,7 @@ import javax.inject.Named;
 import javax.transaction.Transactional;
 
 import src.entity.DeliveryDetailsStatusType;
+import src.entity.DeliveryType;
 import src.entity.Order;
 import src.inter.IServiceLocator;
 import src.jsfcompslib.util.interfaces.IProcessable;
@@ -41,6 +42,7 @@ public class OrdersViewBB implements Serializable, IProcessable {
 	// estado de la entrega
 	private DeliveryDetailsStatusType estadoEntrega = null;
 	private List<DeliveryDetailsStatusType> listaDeliveryStatus = null;
+	private List<DeliveryType> listaDeliveryTypes = null;
 	private String deliveryRemarks = null;
 	
 	
@@ -150,6 +152,10 @@ public class OrdersViewBB implements Serializable, IProcessable {
 		getLogger().log(Level.INFO, msg);
 	}
 	
+	public String menuEventListener() {
+		return null;
+	}
+	
 	@Transactional
 	public String process() {
 		String msg = "Estado entrega = " + getEstadoEntrega() + ", deliveryRemarks = " + getDeliveryRemarks();
@@ -182,9 +188,22 @@ public class OrdersViewBB implements Serializable, IProcessable {
 		}
 		return listaDeliveryStatus;
 	}
+	
 
 	public void setListaDeliveryStatus(List<DeliveryDetailsStatusType> listaDeliveryStatus) {
 		this.listaDeliveryStatus = listaDeliveryStatus;
+	}
+	
+
+	public List<DeliveryType> getListaDeliveryTypes() {
+		if(listaDeliveryTypes == null) {
+			listaDeliveryTypes = Arrays.asList(DeliveryType.values());
+		}
+		return listaDeliveryTypes;
+	}
+
+	public void setListaDeliveryTypes(List<DeliveryType> listaDeliveryTypes) {
+		this.listaDeliveryTypes = listaDeliveryTypes;
 	}
 
 	public String getDeliveryRemarks() {

@@ -8,41 +8,42 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 </p:head>
 <p:body>
+<!-- 	<ui:composition template="../../templates/basic/DosColumnasTemplate.xhtml"> -->
 
-
-<!--  listado de ordenes del cliente -->
-	<div class="divclass"
-		style="width: 20%; display: inline-block; border: 1px;">		
+<!-- 			<ui:define name="columna izquierda"> -->
+		
+<!--  listado de ordenes del cliente - style="width: 20%;display: inline-block; border: 1px;" -->
+	<div class="divclass">		
 		<p:form>
 			<p:selectOneListbox value="#{ordersViewBB.itemSel}" >
-			<c:selectItems value="#{ordersViewBB.list}" var="order" itemValue="#{order.id}" itemLabel="#{order.confirmationDate}" >
+			<c:selectItems value="#{ordersViewBB.list}" var="order" itemValue="#{order.id}" itemLabel="#{order.confirmationDate}"  >
 			</c:selectItems>
 
 
 <c:ajax event="valueChange" listener="#{ordersViewBB.initOrdenSeleccionada()}" render="@all"></c:ajax>
 			</p:selectOneListbox>
 			
-			<p:outputText  value="#{ordersViewBB.itemSel}"></p:outputText>
-			<p:commandButton value="dale"></p:commandButton>
+<!-- 			<p:outputText  value="#{ordersViewBB.itemSel}"></p:outputText> -->
+<!-- 			<p:commandButton value="dale"></p:commandButton> -->
 		</p:form>
 	</div>
+<!-- 			</ui:define> -->
+	
 
+<!-- 			<ui:define name="columna derecha"> -->
+		
 
+		<!--  detalle de una orden -  style="width: 70%;display: inline-block; border: 1px;" -->
+	<div id="detalle" class="divclass">
 
-	<div id="detalle" class="divclass"
-		style="width: 70%; display: inline-block; border: 1px;">
-
-		<!--  detalle de una orden -->
 <!-- 		<ui:include src="../../shopping/PurchaseDetail.xhtml"></ui:include> -->
 		<ui:include src="OrderView.xhtml"></ui:include>
 
 
 	</div>
-
-	<p:messages>
-		<p:message></p:message>
-	</p:messages>
-
+<!-- 			</ui:define> -->
+	
+<!-- 	</ui:composition> -->
 
 </p:body>
 </html>

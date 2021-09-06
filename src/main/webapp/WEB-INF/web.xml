@@ -53,7 +53,7 @@
         <description/>
         <role-name>ADMIN</role-name>
     </security-role>
-
+<!-- 
     <security-constraint>
     	<web-resource-collection>
     		<web-resource-name>EShopProductDeliveryManagement</web-resource-name>
@@ -72,7 +72,7 @@
     
     </security-constraint>
     
-
+ -->
 	 
 	 
 	 

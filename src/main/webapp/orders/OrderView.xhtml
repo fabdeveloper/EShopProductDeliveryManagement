@@ -2,12 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:p="http://java.sun.com/jsf/html"
-	xmlns:em="http://jsfcompslib.src/taglib"
+	xmlns:comp="http://jsfcompslib.src/taglib"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<p:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
-</p:head>
 <p:body>
 	<ui:composition template="../templates/PurchaseDetailTemplate.xhtml">
 		
@@ -16,69 +13,75 @@
 <!-- 		<ui:define name="order"> -->
 		<ui:define name="bloque1">
 		
-			<em:output3fieldscom
-				at1="Identificador del pedido : "
+			<comp:output3fieldscom
+				at1="#{orderLocalizationHelper.getStringOrderId()}"
 				at2="#{ordersViewBB.getOrderseleccionada().getId()}"
-				at3="Fecha de confirmacion: "
+				at3="#{orderLocalizationHelper.getStringOrderConfirmationDate()}"
 				at4="#{ordersViewBB.getOrderseleccionada().getConfirmationDate()}"
-				at5="Estado: "
+				at5="#{orderLocalizationHelper.getStringOrderStatus()}"
 				at6="#{ordersViewBB.getOrderseleccionada().getPurchaseStatus().getStatus()}"
-			></em:output3fieldscom>
+			></comp:output3fieldscom>
 		</ui:define>	
 			
 <!-- 		<ui:define name="client"> -->
 		<ui:define name="bloque4">
 		
-			<em:output6fieldscom
-				at1="Cliente: "
+			<comp:output6fieldscom
+				at1="#{orderLocalizationHelper.getStringUserName()}"
 				at2="#{ordersViewBB.getOrderseleccionada().getClient().getName()}"
-				at3="Nick: "
+				at3="#{orderLocalizationHelper.getStringUserNick()}"
 				at4="#{ordersViewBB.getOrderseleccionada().getClient().getNick()}"
-				at5="Direccion: "
+				at5="#{orderLocalizationHelper.getStringUserAddress()}"
 				at6="#{ordersViewBB.getOrderseleccionada().getClient().getAddress()}"
-				at7="Email: "
+				at7="#{orderLocalizationHelper.getStringUserEmail()}"
 				at8="#{ordersViewBB.getOrderseleccionada().getClient().getEmail()}"				
 
-			></em:output6fieldscom>
+			></comp:output6fieldscom>
 		</ui:define>	
 			
 <!-- 		<ui:define name="delivery"> -->
 		<ui:define name="bloque3">
 		
-			<em:output6fieldscom
-				at1="Direccion de entrega: "
-				at2="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryAddress()}"
-				
-				at3="Comentarios de entrega: "
-				at4="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getRemark()}"
-				
-				at5="Tipo de envio: "
-				at6="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryType()}"
-				
-				at7="Estado de la entrega : "
-				at8="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getStatus()}"
-			></em:output6fieldscom>	
-			
-			<em:ActualizableStatusComp
-				textbutton="Dale"
-				itemseleccionado="#{ordersViewBB.estadoEntrega}"
-				bean="#{ordersViewBB}"
-				listaItems="#{ordersViewBB.listaDeliveryStatus}"
+			<comp:UpdatableDeliveryDetailsComp
+				addresslabel="#{orderLocalizationHelper.getStringDeliveryAddress()}"
+				address="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryAddress()}"
+				addressdisabled="true"
+				remarkslabel="#{orderLocalizationHelper.getStringDeliveryRemarks()}"
 				remarks="#{ordersViewBB.deliveryRemarks}"
-			>
-			</em:ActualizableStatusComp>
+				remarksrendered="true"
+				remarksdisabled="false"
+				deliverytypedisabled="true"
+				typelabel="#{orderLocalizationHelper.getStringDeliveryType()}"
+				typeselected="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getDeliveryType()}"
+				listaDeliveryTypes="#{ordersViewBB.listaDeliveryTypes}"
+				deliverystatusdisabled="false"
+				statuslabel="#{orderLocalizationHelper.getStringDeliveryStatus()}"
+				statusselected="#{ordersViewBB.estadoEntrega}"
+				listaDeliveryStatusTypes="#{ordersViewBB.listaDeliveryStatus}"
+				lastModificationDateLabel="#{generalLocalizationHelper.getStringDeliveryDetailsModificationDate()}"
+				lastModificationDate="#{ordersViewBB.getOrderseleccionada().getDeliveryDetails().getLastModificationDate()}"
+				lastModificationDateDisabled="true"
+				lastModificationDateRendered="true"
+				menuEventListener="#{ordersViewBB.menuEventListener()}"
+				buttonclass="botonclass"
+				inputtextclass="inputclass"
+				buttontext="#{generalLocalizationHelper.getStringActualizarDatosEnvio()}"
+				updateDeliveryInfo="#{ordersViewBB.process()}"
+			></comp:UpdatableDeliveryDetailsComp>
+
+
 		</ui:define>
 				
 <!-- 		<ui:define name="cart"> -->
 		<ui:define name="bloque2">
 		
-			<em:outputcartcomp
-				titulo1="Numero de items: "
+			<comp:outputcartcomp
+				titulo1="#{orderLocalizationHelper.getStringCartNumArticulos()}"
 				texto1="#{ordersViewBB.getOrderseleccionada().getCart().getListaItems().size()}"
-				titulo2="Precio total: "
+				titulo2="#{orderLocalizationHelper.getStringCartPrice()}"
 				texto2="#{ordersViewBB.getOrderseleccionada().getCart().getValue()}"
 				lista="#{ordersViewBB.getOrderseleccionada().getCart().getListaItems()}"		
-			></em:outputcartcomp>	
+			></comp:outputcartcomp>	
 		</ui:define>
 
 
